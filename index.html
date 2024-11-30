@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet feeder</title>
+</head>
+<body>
+    <div style="margin-bottom: 10px;">
+        <button id="otvori" style="width: 70px; height: 30px;">Otvori</button>
+    </div>
+    <div>
+        <button id="zatvori" style="width: 70px; height: 30px;" >Zatvori</button>
+    </div>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDMNtt7yz8cpNgI-NL6z75lrFajLLFlS0I",
+          authDomain: "pet-feeder-17505.firebaseapp.com",
+          databaseURL: "https://pet-feeder-17505-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "pet-feeder-17505",
+          storageBucket: "pet-feeder-17505.firebasestorage.app",
+          messagingSenderId: "877899318681",
+          appId: "1:877899318681:web:df207ca0485651a2f43f08"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import{getDatabase,ref,set,child,update,remove} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        const db=getDatabase();
+        const otvori=document.getElementById("otvori");
+        const zatvori=document.getElementById("zatvori");
+        
+
+        function otvoriKlapnu(){
+            update(ref(db,"nahrani/"),{
+                otvori:180,
+            })
+            .then(()=>{
+                alert("Naharanio");
+            })
+            .catch((error)=>{
+                alert(error);
+            })
+        }
+
+        function zatvoriKlapnu(){
+            update(ref(db,"nahrani/"),{
+                otvori:0,
+            })
+            .then(()=>{
+                alert("Gotovo");
+            })
+            .catch((error)=>{
+                alert(error);
+            })
+        }
+
+        otvori.addEventListener("click",otvoriKlapnu);
+        zatvori.addEventListener("click",zatvoriKlapnu);
+
+      </script>
+
+
+</body>
+</html>
