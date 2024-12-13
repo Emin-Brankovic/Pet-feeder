@@ -153,7 +153,7 @@
         })
           .then((res) => {
             console.log(res);
-            alert("Nahranio");
+            alert("Naharanio");
           })
           .catch((error) => {
             alert(error);
@@ -162,9 +162,6 @@
 
 
       function postaviAutomatskoHranjenje() {
-        alert(vrijeme1.value + ":00");
-        alert(vrijeme2.value + ":00");
-        alert(vrijeme3.value + ":00");
         var vrijemeJedan = vrijeme1.value;
         var vrijemeDva = vrijeme2.value;
         var vrijemeTri = vrijeme3.value;
@@ -174,6 +171,8 @@
           drugi: vrijemeDva,
           treci: vrijemeTri,
         });
+
+        alert("Vrijeme je postavljeno");      
       }
 
       function automatskiRezim() {
